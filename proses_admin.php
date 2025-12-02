@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Kirim notifikasi WhatsApp - Approved
                 if(!empty($no_hp)) {
                     try {
-                        kirimNotifApproved($no_hp);
+                        kirimNotifApproved($no_hp, $nama, $data['jumlah']);
                         $_SESSION['success'] = "Pembayaran atas nama <strong>{$nama}</strong> berhasil disetujui! Notifikasi WhatsApp telah dikirim.";
                     } catch (Exception $e) {
                         error_log("Gagal kirim WA Approved: " . $e->getMessage());
@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Kirim notifikasi WhatsApp - Rejected
                 if(!empty($no_hp)) {
                     try {
-                        kirimNotifRejected($no_hp);
+                        kirimNotifRejected($no_hp, $nama, $data['jumlah']);
                         $_SESSION['success'] = "Pembayaran atas nama <strong>{$nama}</strong> berhasil ditolak! Notifikasi WhatsApp telah dikirim.";
                     } catch (Exception $e) {
                         error_log("Gagal kirim WA Rejected: " . $e->getMessage());

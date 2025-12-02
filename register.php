@@ -1,5 +1,6 @@
 <?php
 require_once 'config/koneksi.php';
+require_once 'wa_helper.php'; // Include WhatsApp helper
 
 $error = '';
 $success = '';
@@ -38,6 +39,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt = $pdo->prepare("INSERT INTO pendaftar (nama, nkk, jenis_kelamin, asal_sekolah, email, no_hp, pengalaman, alamat, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             
             if($stmt->execute([$nama, $nkk, $jenis_kelamin, $asal_sekolah, $email, $no_hp, $pengalaman, $alamat, $hashed_password])) {
+                // Kirim notifikasi WhatsApp
+                kirimNotifRegistrasi($no_hp, $nama, $nkk);
+                
                 $success = "Pendaftaran berhasil! Silakan login.";
             } else {
                 $error = "Terjadi kesalahan saat menyimpan data!";

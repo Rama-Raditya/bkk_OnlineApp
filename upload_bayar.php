@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if($user && !empty($user['no_hp'])) {
                     // Kirim notifikasi WhatsApp
                     try {
-                        kirimNotifUpload($user['no_hp']);
+                        kirimNotifUpload($user['no_hp'], $user['nama'], $jumlah);
                         $_SESSION['success'] = "Bukti pembayaran berhasil diupload! Notifikasi telah dikirim ke WhatsApp Anda. Menunggu verifikasi admin.";
                     } catch (Exception $e) {
                         // Jika gagal kirim WA, tetap sukses upload
