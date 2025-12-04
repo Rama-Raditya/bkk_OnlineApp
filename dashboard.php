@@ -56,7 +56,7 @@ function getStatusBadge($status) {
     </nav>
 
     <div class="container mt-4 mb-5">
-        <h3 class="mb-4">Dashboard Siswa</h3>
+        <h3 class="mb-4">Dashboard Pengguna</h3>
         
         <div class="row">
             <!-- Data Diri -->
